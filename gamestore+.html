@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>GS+ Menu</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    const games = [
+        {
+            title: "Counter-Strike 2",
+            genre: "Strzelanka",
+            price: "ZA DARMO!!!!",
+            image: "https://cdn.cloudflare.steamstatic.com/steam/apps/730/header.jpg"
+        },
+        {
+            title: "Cyberpunk 2077",
+            genre: "RPG",
+            price: "149,00 zł",
+            image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg"
+        },
+        {
+            title: "Stardew Valley",
+            genre: "Symulacja",
+            price: "35,99 zł",
+            image: "https://cdn.cloudflare.steamstatic.com/steam/apps/413150/header.jpg"
+        },
+        {
+            title: "Rabbids: Go Home",
+            genre: "Przygodowa",
+            price: "630,99 zł",
+            image: "https://www.nintendo-insider.com/wp-content/uploads/2009/11/rabbids_go_home_review_header.jpg"
+        }
+    ];
+
+    const genres = [...new Set(games.map(g => g.genre))];
+
+    const filter = document.createElement("select");
+    filter.innerHTML = `<option value="all">Wszystkie gatunki</option>` +
+        genres.map(g => `<option value="${g}">${g}</option>`).join("");
+    filter.addEventListener("change", () => renderGames(filter.value));
+    document.body.appendChild(filter);
+
+    const container = document.createElement("div");
+    container.className = "game-store";
+    document.body.appendChild(container);
+
+    function renderGames(selectedGenre) {
+        container.innerHTML = "";
+        const filtered = selectedGenre === "all" ? games : games.filter(g => g.genre === selectedGenre);
+        filtered.forEach(game => {
+            const card = document.createElement("div");
+            card.className = "game-card";
+            card.innerHTML = `
+                <img src="${game.image}" alt="${game.title}" class="game-image">
+                <h3 class="game-title">${game.title}</h3>
+                <p class="game-genre">${game.genre}</p>
+                <p class="game-price">${game.price}</p>
+                <button class="buy-button">Zainstaluj!</button>
+            `;
+            container.appendChild(card);
+        });
+    }
+
+    renderGames("all");
+
+    const style = document.createElement("style");
+    style.textContent = `
+        .game-store {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+            justify-content: center;
+        }
+        .game-card {
+            width: 200px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+            background-color: #008cffff;
+            box-shadow: 0 2px 5px rgba(7, 0, 99, 0.1);
+        }
+        .game-image {
+            width: 100%;
+            border-radius: 4px;
+        }
+        .game-image:hover {
+            width: 100%;
+            border-radius: 6px;
+        }
+        .game-title {
+            font-size: 18px;
+            margin: 10px 0 5px;
+        }
+        .game-genre {
+            font-size: 14px;
+            color: #666;
+        }
+        .game-price {
+            font-size: 16px;
+            font-weight: bold;
+            color: #acb9ffff;
+        }
+        .buy-button {
+            margin-top: 10px;
+            padding: 8px 12px;
+            background-color: #1100ffff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .buy-button:hover {
+            background-color: #6978ffff;
+            transition: 0.2s;
+        }
+        select {
+            text-align: center;
+            margin: 20px;
+            padding: 8px;
+            font-size: 16px;
+        }
+        .buy-button.fade-out {
+            opacity: 0;
+            transition: opacity 0.5s ease-out;
+        }
+
+    `;
+    document.head.appendChild(style);
+    card.className = "game-card";
+    card.className = "game-card fade-in";
+    setTimeout(() => card.classList.add("visible"), 50);
+
+});
+    </script>
+    <style>
+        body {
+    background-color: #2125ff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.menu-strip {
+    background: #181b80;
+    padding: 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.menu-logo {
+    height: 40px;
+    margin-right: 30px;
+    display: block;
+    transition: all 0.2s;
+}
+.menu-logo:hover {
+    background: #4f9bff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    transform: scale(1.05);
+    transition: all 0.2s;
+}
+.menu-strip ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+.menu-strip li {
+    margin: 0 15px;
+}
+.menu-strip a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 14px 20px;
+    display: block;
+    transition: 0.3s;
+}
+.menu-strip a:hover {
+    background: #4f9bff;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+.scroll-container {
+    width: 100%;
+    height: 50px;
+    overflow: hidden;
+    background-color: #f0f0f0;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    position: relative;
+}
+.scroll-content {
+    display: inline-block;
+    white-space: nowrap;
+    animation: scroll-left 20s linear infinite;
+    padding-left: 100%;
+}
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+h1 {
+    text-align: center;
+    color: #ffffff;
+}
+.fade-in {
+    opacity: 0;
+    transition: opacity 0.8s ease-in;
+}
+.fade-in.visible {
+    opacity: 1;
+}
+
+    </style>
+</head>
+<body>
+    <nav class="menu-strip">
+        <img src="file:///C:/Users/Wojtusio123/Downloads/costume1%20(1).png" alt="GS+ Logo" class="menu-logo">
+        <ul>
+            <li><a href="file:///C:/Users/Wojtusio123/source/repos/GameStore%2B%201.0/GameStore%2B%201.0/bin/Debug/Okna/Menu%20G%C5%82%C3%B3wne/GS%2B%20Menu%20%232.html">Strona główna</a></li>
+            <li><a href="file:///C:/Users/Wojtusio123/source/repos/GameStore+%201.0/GameStore+%201.0/bin/Debug/Okna/Menu%20Główne/GS+%20Menu%20%231.html">Wiadomości</a></li>
+            <li><a href="samouczki.html">Samouczki</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+    </nav>
+
+    <div class="scroll-container">
+    <div class="scroll-content" id="scrollContent">
+        <p>Witamy w GameStore+, w stronie głównej znajdziesz najlepsze promocje na różne gry! Nawet zniżamy wam ceny! Polecamy wam też gry, np.: Rabbids: Go Home, Counter Strike 2, Cyberpunk 2077 i inne...</p>
+    </div>
+
+    <div class ="menu-content">
+        <h1>Witamy w GameStore+</h1>
+        <p>Odkryj najnowsze promocje, gry i inne...</p>
+        <p>🎮 Sprawdź nasze najnowsze gry!</p>
+    </div>
+
+    <div class="steam-shop">
+        <iframe src="https://store.steampowered.com/widget/730/" framewidth="646" height="190"></iframe>
+        <iframe src="https://store.steampowered.com/" frameborder="0" width="646" height="190"></iframe>
+        <iframe src="https://store.steampowered.com/" frameborder="0" width="646" height="190"></iframe>
+    </div>
+
+    <footer class="menu-footer">
+        <p>&copy; 2023 GameStore+. Wszelkie prawa zastrzeżone.</p>
+    </footer>
+
+</body>
+</html>
