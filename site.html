@@ -1,0 +1,135 @@
+<DOCTYPE html>
+    <html lang= "pl">
+    <meta charset="UTF-8">
+    <title>PR-BR App na Windows</title>
+    <style>
+        body {
+    background-color: #ff5c5c;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+        }
+h1 {
+    text-align: center;
+    color: #fff;
+    margin-top: 50px;
+    font-size: 2.5em;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+p {
+    text-align: center;
+    color: #fff;
+    font-size: 1.2em;
+    margin: 20px auto;
+    max-width: 600px;
+    text-shadow: 6px 6px 4px rgba(0, 0, 0, 0.74);
+}
+button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #fff;
+    color: #850000;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+button:hover {
+    background-color: #ff9a9a;
+    transform: scale(1.05);
+}
+.menu-strip {
+    background: #850000;
+    padding: 8 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+.menu-strip:hover{
+    background: #70000085;
+    padding: 15 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+.menu-logo {
+    height: 40px;
+    margin-right: 30px;
+    display: block;
+    transition: all 0.4s;
+}
+.menu-logo:hover {
+    background: #ff9a9a;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    transform: scale(1.05);
+    transition: all 0.2s;
+}
+.menu-strip ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+.menu-strip li {
+    margin: 0 15px;
+}
+.menu-strip a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 14px 20px;
+    display: block;
+    font-size: 1em;
+    transition: all 0.4s;
+}
+.menu-strip a:hover {
+    background: #ff9a9a;
+    border-radius: 5px;
+    transition: all 0.2s;
+}
+    </style>
+    <link rel="icon" href="C:\Users\Wojtusio123\Downloads\PR-BR Productions [Full Logo].png">
+<body>
+    <nav class="menu-strip">
+    <img src="C:\Users\Wojtusio123\Downloads\PR-B Productions [Full Logo].png" alt="GS+ Logo" class="menu-logo">
+    <ul>
+        <li><a href="">Strona główna</a></li>
+        <li><a href="">Wiadomości</a></li>
+        <li><a href="">Samouczki</a></li>
+        <li><a href="">Kontakt</a></li>
+    </ul>
+    </nav>
+    <h1>PR-BR App na Windows</h1>
+    <p>Ta aplikacja jest przeznaczona do użytku w systemie Windows.</p>
+    <p>Wymagania:</p>
+    <p>Aby zainstalować aplikację, pobierz plik instalacyjny i uruchom go.</p> 
+    <button>Pobierz plik</button>
+    <button onclick="pobierzPlik()">Pobierz PR-BR App</button>
+    <p>Po pobraniu pliku, kliknij przycisk poniżej, aby rozpocząć instalację:</p>
+    <button onclick="pobierzPlik()">Zainstaluj PR-BR App</button>
+    <p>Po zakończeniu instalacji, możesz uruchomić aplikację z menu Start lub z pulpitu.</p>
+    <p>Jeśli masz jakiekolwiek pytania lub potrzebujesz pomocy, skontaktuj się z nami przez formularz kontaktowy na naszej stronie internetowej.</p>
+    <script>
+        function pobierzPlik() {
+        const link = document.createElement('a');
+        link.href = 'C:\Users\Wojtusio123\Downloads\PR-BR App Desktop.lnk';
+        link.download = 'PR-BR Desktop.exe';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        alert('Plik został pobrany.');
+        }
+    </script>
+    <footer>
+        <p>&copy; 2025/2026 PR-BR Productions. Wszelkie prawa zastrzeżone.</p>
+    </footer>
+</body>
+
+
+</html>
